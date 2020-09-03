@@ -123,10 +123,14 @@ module.exports = function(source) {
   )
   const scriptImport = `import script from ${scriptFilePath}`
 
+  const jsonFilePath = filename.replace('.fxml', '.json')
+  const jsonImport = `import "./${jsonFilePath}"`
+
   // 获取模板 var render var staticRenderFns
 
   let code =
     `
+  ${jsonImport}
   ${scriptImport}
   ${stylesImport}
   ${templateCompiled.code}
